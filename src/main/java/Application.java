@@ -8,8 +8,20 @@ public class Application {
 		params.setSearchOrder(new String[]{"u", "d", "l", "r"});
 
 		BreadthFirstSearch bfs = new BreadthFirstSearch();
-		State finalState = bfs.execute(initState);
+		ResultParams searchParams = bfs.execute(initState);
+//
+		DepthFirstSearch dfs = new DepthFirstSearch();
+		ResultParams searchParams2 = dfs.execute(initState);
 
+
+		//todo:
+		// PLIK Z ROZWIAZANIEM
+		//  PLIK Z DODATKOWYMI INFORMACJAMI
+		//  1 linia (liczba całkowita): długość znalezionego rozwiązania - o takiej samej wartości jak w pliku z rozwiązaniem (przy czym gdy program nie znalazł rozwiązania, wartość ta to -1);
+		//  2 linia (liczba całkowita): liczbę stanów odwiedzonych;
+		//  3 linia (liczba całkowita): liczbę stanów przetworzonych;
+		//  4 linia (liczba całkowita): maksymalną osiągniętą głębokość rekursji;
+		//  5 linia (liczba rzeczywista z dokładnością do 3 miejsc po przecinku): czas trwania procesu obliczeniowego w milisekundach.
 	}
 
 }

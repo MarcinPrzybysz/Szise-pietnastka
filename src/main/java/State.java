@@ -1,41 +1,13 @@
+import lombok.Data;
+
+@Data
 public class State {
 	private int height;
 	private int width;
 	private int[][] arrangement;
 	private Position gapPosition;
-
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int[][] getArrangement() {
-		return arrangement;
-	}
-
-	public void setArrangement(int[][] arrangement) {
-		this.arrangement = arrangement;
-	}
-
-	public Position getGapPosition() {
-		return gapPosition;
-	}
-
-	public void setGapPosition(Position gapPosition) {
-		this.gapPosition = gapPosition;
-	}
+	private String moveDirection;
+	private int depth = 0;
 
 	public State move(int moveX, int moveY) {
 		if (isMovePossible(moveX, moveY)) {
@@ -47,11 +19,10 @@ public class State {
 			arrangement[gapPosition.getY() + moveY][gapPosition.getX() + moveX] = 0;
 			arrangement[gapPosition.getY()][gapPosition.getX()] = adjoiningValue;
 
-
 			gapPosition.setX(gapPosition.getX() + moveX);
 			gapPosition.setY(gapPosition.getY() + moveY);
-
 			newState.setArrangement(arrangement);
+			newState.setDepth(depth + 1);
 
 			return newState;
 		}
@@ -79,10 +50,8 @@ public class State {
 
 	private int[][] copyArray(int[][] arr) {
 		int[][] newArr = new int[arr.length][arr[0].length];
-		for(int i =0; i<arr.length;i++) {
-			for(int j =0; j<arr[0].length;j++) {
-				newArr[i][j] = arr[i][j];
-			}
+		for(int i = 0; i<arr.length;i++) {
+			System.arraycopy(arr[i], 0, newArr[i], 0, arr[0].length);
 		}
 		return newArr;
 	}

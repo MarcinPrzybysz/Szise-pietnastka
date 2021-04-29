@@ -1,15 +1,15 @@
 import java.util.*;
 
-public class BreadthFirstSearch {
+public class DepthFirstSearch {
 	Set<State> explored = new HashSet<>();
 	ArrayDeque<State> openStates = new ArrayDeque<>();
 	StringBuilder movesBuilder;
 
-	public BreadthFirstSearch() {
+	public DepthFirstSearch() {
 		movesBuilder = new StringBuilder();
 	}
 
-	//FIFI
+	//LIFO
 
 	public ResultParams execute(State initState) {
 		ResultParams resultParams = new ResultParams();
@@ -21,20 +21,16 @@ public class BreadthFirstSearch {
 			resultParams.setResultPath(movesBuilder.toString());
 			return resultParams;
 		}
-
 		openStates.add(initState);
 
 		while (!openStates.isEmpty()) {
-			State currentState = openStates.pollFirst();
+			State currentState = openStates.pollLast();
 			explored.add(currentState);
 
-			if (StateUtils.isFinalState(currentState)) {
-				printReport(startTime);
-				resultParams.setResultLength(movesBuilder.toString().length());
-				resultParams.setResultPath(movesBuilder.toString());
-				return resultParams;
+			if (currentState.getDepth() > Params.MAX_DEPTH) {
+				//wracamy
+				continue;
 			}
-			movesBuilder.append(currentState.getMoveDirection());
 
 			List<State> neighbours = StateUtils.getNeighbours(currentState);
 			for (State neighbour : neighbours) {
@@ -44,17 +40,20 @@ public class BreadthFirstSearch {
 						resultParams.setResultLength(movesBuilder.toString().length());
 						resultParams.setResultPath(movesBuilder.toString());
 						return resultParams;
+					} else {
+						openStates.add(neighbour);
 					}
-					openStates.add(neighbour);
+
 				} else {
 					System.out.println("already been there");
 				}
 			}
 
 		}
-		resultParams.setResultLength(-1);
+
 		return resultParams;
 	}
+
 
 	private void printReport(long startTime) {
 		System.out.println("długość znalezionego rozwiązania: " + movesBuilder.toString().length() + "\n" +

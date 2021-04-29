@@ -28,7 +28,7 @@ public class StateUtils {
 		return true;
 	}
 
-	public static List getNeighbours(State state) {
+	public static List<State> getNeighbours(State state) {
 		if (Params.INSTANCE.getSearchOrder() == null) {
 			throw new RuntimeException("searchOrder is not set");
 		}
@@ -37,24 +37,25 @@ public class StateUtils {
 		for (String direction : Params.INSTANCE.getSearchOrder()) {
 			switch (direction.toLowerCase()) {
 				case "l":
-					addConditionally(states, state.move(-1, 0));
+					addConditionally(states, direction, state.move(-1, 0));
 					break;
 				case "r":
-					addConditionally(states, state.move(0, 1));
+					addConditionally(states, direction, state.move(0, 1));
 					break;
 				case "u":
-					addConditionally(states, state.move(0, -1));
+					addConditionally(states, direction, state.move(0, -1));
 					break;
 				case "d":
-					addConditionally(states, state.move(1, 0));
+					addConditionally(states, direction, state.move(1, 0));
 					break;
 			}
 		}
 		return states;
 	}
 
-	private static void addConditionally(List states, State state) {
+	private static void addConditionally(List states, String direction, State state) {
 		if (state != null) {
+			state.setMoveDirection(direction);
 			states.add(state);
 		}
 	}
