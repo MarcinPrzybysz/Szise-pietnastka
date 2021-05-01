@@ -14,6 +14,10 @@ public class Application {
 		ResultParams searchParams2 = dfs.execute(initState);
 
 
+		AStar aStar = new AStar();
+		ResultParams searchParams3 = aStar.execute(initState);
+
+
 		//todo:
 		// PLIK Z ROZWIAZANIEM
 		//  PLIK Z DODATKOWYMI INFORMACJAMI

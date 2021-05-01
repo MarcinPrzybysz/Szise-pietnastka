@@ -8,6 +8,11 @@ public class State {
 	private Position gapPosition;
 	private String moveDirection;
 	private int depth = 0;
+	private int pathCost;
+
+	public Integer getTotalCost(){
+		return pathCost + depth;
+	}
 
 	public State move(int moveX, int moveY) {
 		if (isMovePossible(moveX, moveY)) {
@@ -54,5 +59,10 @@ public class State {
 			System.arraycopy(arr[i], 0, newArr[i], 0, arr[0].length);
 		}
 		return newArr;
+	}
+
+	public void calculatePathCost() {
+		pathCost = StateUtils.hamming(this);
+//		cost = StateUtils.manhattan(this);
 	}
 }
