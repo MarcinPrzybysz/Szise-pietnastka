@@ -1,5 +1,7 @@
 import lombok.Data;
 
+import java.util.Arrays;
+
 @Data
 public class State {
 	private int height;
@@ -61,8 +63,25 @@ public class State {
 		return newArr;
 	}
 
+	public int getPositionValue(int x, int y) {
+		return arrangement[y][y];
+	}
+
 	public void calculatePathCost() {
 		pathCost = StateUtils.hamming(this);
 //		cost = StateUtils.manhattan(this);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		State state = (State) o;
+		return Arrays.equals(arrangement, state.arrangement);
+	}
+
+	@Override
+	public int hashCode() {
+		return Arrays.hashCode(arrangement);
 	}
 }
