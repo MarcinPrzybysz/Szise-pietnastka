@@ -9,7 +9,7 @@ public class BreadthFirstSearch {
 		movesBuilder = new StringBuilder();
 	}
 
-	//FIFI
+	//FIFO
 
 	public ResultParams execute(State initState) {
 		ResultParams resultParams = new ResultParams();
@@ -39,7 +39,7 @@ public class BreadthFirstSearch {
 			List<State> neighbours = StateUtils.getNeighbours(currentState);
 			for (State neighbour : neighbours) {
 				if (!explored.contains(neighbour)) {
-					if (StateUtils.isFinalState(currentState)) {
+					if (StateUtils.isFinalState(neighbour)) {
 						printReport(startTime);
 						resultParams.setResultLength(movesBuilder.toString().length());
 						resultParams.setResultPath(movesBuilder.toString());

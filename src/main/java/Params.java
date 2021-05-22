@@ -1,7 +1,7 @@
 public class Params {
 	public static Params INSTANCE;
 	private static String[] searchOrder;
-	public static int MAX_DEPTH = 21; //min 20
+	public static int MAX_DEPTH = 20; //min 20
 
 	public Params() {
 		this.INSTANCE = this;

@@ -13,7 +13,7 @@ public class StateUtils {
 	 * 9	10	11	12
 	 * 13	14	15
 	 */
-	public static boolean isFinalState(State state) {
+	static boolean isFinalState(State state) {
 		int[][] arrangement = state.getArrangement();
 		int value = 1;
 		int height = arrangement.length;
@@ -32,7 +32,7 @@ public class StateUtils {
 		return true;
 	}
 
-	public static List<State> getNeighbours(State state) {
+	static List<State> getNeighbours(State state) {
 		if (Params.INSTANCE.getSearchOrder() == null) {
 			throw new RuntimeException("searchOrder is not set");
 		}
@@ -71,7 +71,7 @@ public class StateUtils {
 	//	 * 13	14	0   15
 	// dla tego uklad upowinno wyjść 1 a nie 2
 
-	public static int hamming(State state) {
+	static int hamming(State state) {
 		int[][] arrangement = state.getArrangement();
 		int value = 1;
 		int incorrectPositions = 0;

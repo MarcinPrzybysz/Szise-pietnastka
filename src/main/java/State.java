@@ -11,6 +11,7 @@ public class State {
 	private String moveDirection;
 	private int depth = 0;
 	private int pathCost;
+	private int fScore = 0;
 
 	public Integer getTotalCost(){
 		return pathCost + depth;
@@ -83,5 +84,13 @@ public class State {
 	@Override
 	public int hashCode() {
 		return Arrays.hashCode(arrangement);
+	}
+
+	public void setFScore(int fScore) {
+		this.fScore = fScore;
+	}
+
+	public int getFScore() {
+		return fScore;
 	}
 }

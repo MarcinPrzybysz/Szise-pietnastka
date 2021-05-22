@@ -35,7 +35,7 @@ public class DepthFirstSearch {
 			List<State> neighbours = StateUtils.getNeighbours(currentState);
 			for (State neighbour : neighbours) {
 				if (!explored.contains(neighbour)) {
-					if (StateUtils.isFinalState(currentState)) {
+					if (StateUtils.isFinalState(neighbour)) {
 						printReport(startTime);
 						resultParams.setResultLength(movesBuilder.toString().length());
 						resultParams.setResultPath(movesBuilder.toString());
@@ -48,7 +48,6 @@ public class DepthFirstSearch {
 					System.out.println("already been there");
 				}
 			}
-
 		}
 
 		return resultParams;
