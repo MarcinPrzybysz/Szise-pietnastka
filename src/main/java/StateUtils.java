@@ -11,12 +11,12 @@ public class StateUtils {
 	 * 1	2	3	4
 	 * 5	6	7	8
 	 * 9	10	11	12
-	 * 13	14	15
+	 * 13	14	15 0
 	 */
 	static boolean isFinalState(State state) {
 		int[][] arrangement = state.getArrangement();
 		int value = 1;
-		int height = arrangement.length;
+		int height = arrangement[1].length;
 		int width = arrangement[0].length;
 
 		for (int i = 0; i < height; i++) {
@@ -43,13 +43,13 @@ public class StateUtils {
 				case "l":
 					addConditionally(states, direction, state.move(-1, 0));
 					break;
-				case "r":
+				case "d":
 					addConditionally(states, direction, state.move(0, 1));
 					break;
 				case "u":
 					addConditionally(states, direction, state.move(0, -1));
 					break;
-				case "d":
+				case "r":
 					addConditionally(states, direction, state.move(1, 0));
 					break;
 			}
@@ -60,6 +60,7 @@ public class StateUtils {
 	private static void addConditionally(List states, String direction, State state) {
 		if (state != null) {
 			state.setMoveDirection(direction);
+			state.setPath(direction);
 			states.add(state);
 		}
 	}

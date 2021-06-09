@@ -12,6 +12,7 @@ public class State {
 	private int depth = 0;
 	private int pathCost;
 	private int fScore = 0;
+	private String path = "";
 
 	public Integer getTotalCost(){
 		return pathCost + depth;
@@ -38,7 +39,7 @@ public class State {
 	}
 
 	private boolean isMovePossible(int moveX, int moveY) {
-		if (gapPosition.getX() + moveX < 0 || gapPosition.getX() + moveX > width - 1) {
+		if (gapPosition.getX() + moveX < 0 || gapPosition.getX() + moveX > height - 1) {
 			return false;
 		}
 		if (gapPosition.getY() + moveY < 0 || gapPosition.getY() + moveY > width - 1) {
@@ -65,7 +66,7 @@ public class State {
 	}
 
 	public int getPositionValue(int x, int y) {
-		return arrangement[y][y];
+		return arrangement[x][y];
 	}
 
 	public void calculatePathCost() {
@@ -81,6 +82,14 @@ public class State {
 		return Arrays.equals(arrangement, state.arrangement);
 	}
 
+//	@Override
+//	public boolean equals(Object o) {
+//		if (this.hashCode() == o.hashCode()) return true;
+//		if (o == null || getClass().hashCode() != o.getClass().hashCode()) return false;
+//		State state = (State) o;
+//		return Arrays.equals(arrangement, state.arrangement);
+//	}
+
 	@Override
 	public int hashCode() {
 		return Arrays.hashCode(arrangement);
@@ -92,5 +101,13 @@ public class State {
 
 	public int getFScore() {
 		return fScore;
+	}
+
+	public void addPath(String s){
+		path+=s;
+	}
+
+	public String getPath() {
+		return path;
 	}
 }
