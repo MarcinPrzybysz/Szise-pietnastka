@@ -71,7 +71,6 @@ public class State {
 
 	public void calculatePathCost() {
 		pathCost = StateUtils.hamming(this);
-//		cost = StateUtils.manhattan(this);
 	}
 
 	@Override
@@ -82,13 +81,6 @@ public class State {
 		return Arrays.equals(arrangement, state.arrangement);
 	}
 
-//	@Override
-//	public boolean equals(Object o) {
-//		if (this.hashCode() == o.hashCode()) return true;
-//		if (o == null || getClass().hashCode() != o.getClass().hashCode()) return false;
-//		State state = (State) o;
-//		return Arrays.equals(arrangement, state.arrangement);
-//	}
 
 	@Override
 	public int hashCode() {

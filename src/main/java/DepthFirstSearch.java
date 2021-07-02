@@ -11,8 +11,6 @@ public class DepthFirstSearch {
 		movesBuilder = new StringBuilder();
 	}
 
-	//LIFO
-
 	public ResultParams execute(State initState) {
 		ResultParams resultParams = new ResultParams();
 		long startTime = System.currentTimeMillis();
@@ -36,7 +34,7 @@ public class DepthFirstSearch {
 			State currentState = openStates.pollLast();
 			explored.add(currentState);
 
-			if (currentState.getDepth() > Params.MAX_DEPTH) {
+			if (currentState.getDepth() == Params.MAX_DEPTH) {
 				//wracamy
 				continue;
 			}
@@ -78,7 +76,7 @@ public class DepthFirstSearch {
 	private void printReport(long startTime) {
 		System.out.println("długość znalezionego rozwiązania: " + movesBuilder.toString().length() + "\n" +
 				"liczbę stanów odwiedzonych: " + (explored.size() + openStates.size()) + "\n" +
-				"liczbę stanów przetworzonych: " + explored.size() + "\n" +  //NIE JESTEM PEWIEN
+				"liczbę stanów przetworzonych: " + explored.size() + "\n" +
 				"maksymalną osiągniętą głębokość rekursji: "+maxDepth+"\n" +  //NIE DOTYCZY BFS
 				"czas trwania procesu obliczeniowego:" + (System.currentTimeMillis() - startTime) + " [ms]");
 	}

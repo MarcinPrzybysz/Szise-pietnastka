@@ -9,8 +9,6 @@ public class BreadthFirstSearch {
 		movesBuilder = new StringBuilder();
 	}
 
-	//FIFO
-
 	public ResultParams execute(State initState) {
 		ResultParams resultParams = new ResultParams();
 		long startTime = System.currentTimeMillis();
@@ -76,7 +74,7 @@ public class BreadthFirstSearch {
 	private void printReport(long startTime) {
 		System.out.println("długość znalezionego rozwiązania: " + movesBuilder.toString().length() + "\n" +
 				"liczbę stanów odwiedzonych: " + (explored.size() + openStates.size()) + "\n" +
-				"liczbę stanów przetworzonych: " + explored.size() + "\n" +  //NIE JESTEM PEWIEN
+				"liczbę stanów przetworzonych: " + explored.size() + "\n" +
 				"maksymalną osiągniętą głębokość rekursji:\n" +  //NIE DOTYCZY BFS
 				"czas trwania procesu obliczeniowego:" + (System.currentTimeMillis() - startTime) + " [ms]");
 	}

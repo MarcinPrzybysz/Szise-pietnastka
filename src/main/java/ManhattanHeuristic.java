@@ -8,19 +8,6 @@ public class ManhattanHeuristic extends AbstractHeuristic {
 		super(width, height);
 	}
 
-
-	//liczymy odległość każdego z punktu do jego właściwego położenia (oprócz zera)
-	//	 * 1	2	3	4
-	//	 * 5	6	7	8
-	//	 * 9	10	11	12
-	//	 * 13	14	15   0
-
-
-	//	 * 1	2	3	4
-	//	 * 5	6	9	8
-	//	 * 9	10	11	12
-	//	 * 13	14	15   0
-
 	@Override
 	public int distance(State state) {
 		if (this.finalState == null) {
@@ -31,7 +18,7 @@ public class ManhattanHeuristic extends AbstractHeuristic {
 			for (int j = 0; j < state.getHeight(); j++) {
 				int value = state.getPositionValue(i, j);
 				if (value != 0) {
-					distance += Math.abs(i - finalState2.get(value).getY()) + Math.abs(j - finalState2.get(value).getX());
+					distance += Math.abs(i - finalState2.get(value).getX()) + Math.abs(j - finalState2.get(value).getY());
 				}
 			}
 		}

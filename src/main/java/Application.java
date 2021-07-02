@@ -13,9 +13,8 @@ public class Application {
         String solutionFile = args[3];
         String statisticsFile = args[4];
 
-
         PuzzleLoader loader = new PuzzleLoader();
-        State initState = loader.load("src/main/resources/inputs/" + inputFile);
+        State initState = loader.load(inputFile);
         Params params = new Params();
         ResultParams searchParams;
         switch (strategy) {
@@ -25,7 +24,7 @@ public class Application {
                 searchParams = bfs.execute(initState);
                 break;
             case "dfs":
-                params.setSearchOrder(new String[]{String.valueOf(strategyParam.charAt(0)), String.valueOf(strategyParam.charAt(1)), String.valueOf(strategyParam.charAt(2)), String.valueOf(strategyParam.charAt(3))});
+                params.setSearchOrder(new String[]{String.valueOf(strategyParam.charAt(3)), String.valueOf(strategyParam.charAt(2)), String.valueOf(strategyParam.charAt(1)), String.valueOf(strategyParam.charAt(0))});
                 DepthFirstSearch dfs = new DepthFirstSearch();
                 searchParams = dfs.execute(initState);
                 break;
@@ -39,7 +38,7 @@ public class Application {
         }
 
         try {
-            FileWriter solutionWritter = new FileWriter("src/main/resources/outputs/"+solutionFile);
+            FileWriter solutionWritter = new FileWriter(solutionFile);
             solutionWritter.write(searchParams.getResultLength() + "\n");
             if(searchParams.getResultLength()>-1) {
                 solutionWritter.write(searchParams.getResultPath() + "\n");
@@ -50,7 +49,7 @@ public class Application {
         }
 
         try {
-            FileWriter StatisticsWritter = new FileWriter("src/main/resources/outputs/"+statisticsFile);
+            FileWriter StatisticsWritter = new FileWriter(statisticsFile);
             StatisticsWritter.write(searchParams.getResultLength() + "\n");
             StatisticsWritter.write(searchParams.getExplored() + "\n");
             StatisticsWritter.write(searchParams.getProcessed() + "\n");

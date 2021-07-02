@@ -1,6 +1,3 @@
-/**
- * Pozycja elementu układanki zgodnie z układem kartezjańskim
- */
 public class Position {
 	private int x;
 	private int y;

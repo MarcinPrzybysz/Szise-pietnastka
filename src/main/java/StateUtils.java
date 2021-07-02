@@ -65,13 +65,6 @@ public class StateUtils {
 		}
 	}
 
-
-	//	 * 1	2	3	4
-	//	 * 5	6	7	8
-	//	 * 9	10	11	12
-	//	 * 13	14	0   15
-	// dla tego uklad upowinno wyjść 1 a nie 2
-
 	static int hamming(State state) {
 		int[][] arrangement = state.getArrangement();
 		int value = 1;
@@ -83,7 +76,7 @@ public class StateUtils {
 			for (int j = 0; j < width; j++) {
 				if (arrangement[i][j] == 0) { // ze względu na "dopuszaczalność" nie możemy przeszacowywać, omijamy wartość 0
 
-				} else if (i == height - 1 && j == width - 1 && arrangement[i][j] != 0) { //last element is not 0, fixme? nie bierzemy zera ale czy patrzymky ostatnią pozycję?
+				} else if (i == height - 1 && j == width - 1 && arrangement[i][j] != 0) { //last element is not 0,
 					incorrectPositions++;
 				} else if (arrangement[i][j] != value) { //value incorrect
 					incorrectPositions++;
@@ -109,7 +102,7 @@ public class StateUtils {
 					// skip 0
 				} else {
 					Position finalPos = valuePositions.get(arrangement[i][j]);
-					distanceSum = distanceSum + Math.abs(finalPos.getX() - j) + Math.abs(finalPos.getY() - i); //todo sprawdzić czy nie odwrotnie wspólrzedne
+					distanceSum = distanceSum + Math.abs(finalPos.getX() - j) + Math.abs(finalPos.getY() - i);
 				}
 			}
 		}
