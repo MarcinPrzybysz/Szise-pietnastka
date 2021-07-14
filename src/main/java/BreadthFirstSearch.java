@@ -18,9 +18,12 @@ public class BreadthFirstSearch {
 			printReport(startTime);
 			resultParams.setResultLength(movesBuilder.toString().length());
 			resultParams.setResultPath(movesBuilder.toString());
+			resultParams.setMaxDepthRecursion(initState.getDepth());
 			resultParams.setExplored(explored.size() + openStates.size());
 			resultParams.setProcessed(explored.size());
 			resultParams.setTime((long) Precision.round((System.currentTimeMillis() - startTime),3));
+			System.out.println(openStates.size());
+			System.out.println(explored.size());
 			return resultParams;
 		}
 
@@ -35,9 +38,12 @@ public class BreadthFirstSearch {
 				printReport(startTime);
 				resultParams.setResultLength(movesBuilder.toString().length());
 				resultParams.setResultPath(movesBuilder.toString());
+				resultParams.setMaxDepthRecursion(currentState.getDepth());
 				resultParams.setExplored(explored.size() + openStates.size());
 				resultParams.setProcessed(explored.size());
 				resultParams.setTime((long) Precision.round((System.currentTimeMillis() - startTime),3));
+				System.out.println(openStates.size());
+				System.out.println(explored.size());
 				return resultParams;
 			}
 
@@ -54,9 +60,12 @@ public class BreadthFirstSearch {
 						printReport(startTime);
 						resultParams.setResultLength(movesBuilder.toString().length());
 						resultParams.setResultPath(movesBuilder.toString());
+						resultParams.setMaxDepthRecursion(neighbour.getDepth());
 						resultParams.setExplored(explored.size() + openStates.size());
 						resultParams.setProcessed(explored.size());
 						resultParams.setTime((long) Precision.round((System.currentTimeMillis() - startTime),3));
+						System.out.println(openStates.size());
+						System.out.println(explored.size());
 						return resultParams;
 					}
 					openStates.add(neighbour);

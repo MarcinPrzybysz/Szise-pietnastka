@@ -69,10 +69,6 @@ public class State {
 		return arrangement[x][y];
 	}
 
-	public void calculatePathCost() {
-		pathCost = StateUtils.hamming(this);
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
